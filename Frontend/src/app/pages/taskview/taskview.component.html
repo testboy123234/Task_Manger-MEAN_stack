@@ -20,17 +20,16 @@
                 Tasks
             </h1>
             <!-- Task elements -->
-            <div class="task" *ngFor="let task of tasks">
+            <div class="task" *ngFor="let task of tasks" (click)="onTaskClick(task)" [ngClass]="{ 'completed': task.completed }" >
                 <p>{{ task.title }}</p>
             </div>
            
-            <div class="task complete">
-                <p>This is testing text</p>
-            </div>
-
+         
             <button class="circle-add-button button is-primary" routerLink="./new-task">
                 <img src="../../../assets/plus-icon.svg">
             </button>
         </div>
     </div>
 </div>
+
+

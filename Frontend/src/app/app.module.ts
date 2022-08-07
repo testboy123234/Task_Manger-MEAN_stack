@@ -8,6 +8,7 @@ import { TaskviewComponent } from './pages/taskview/taskview.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewListComponent } from './pages/new-list/new-list.component';
 import { NewTaskComponent } from './pages/new-task/new-task.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NewTaskComponent } from './pages/new-task/new-task.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
