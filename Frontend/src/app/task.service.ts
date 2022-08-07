@@ -13,6 +13,12 @@ export class TaskService {
     return this.webReqService.post('lists',{ title });
   }
 
+  createTask(title: string, listId: string) {
+    // we want  to send a web request to create a List
+    return this.webReqService.post(`lists/${listId}/tasks`,{ title });
+  }
+
+
   getLists(){
     return this.webReqService.get('lists');
   }
@@ -21,4 +27,5 @@ export class TaskService {
     return this.webReqService.get(`lists/${listId}/tasks`);
   }
 
+  
 }
