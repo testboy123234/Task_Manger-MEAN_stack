@@ -51,7 +51,7 @@ UserSchema.methods.generateAccessAuthToken = function () {
     const user = this;
     return new Promise((resolve, reject) => {
         // create the JSON Web Token and return that
-        jwt.sign({ _id: user._id.toHexString() }, jwtSecret, { expiresIn:"15m" }, (err, token) => {
+        jwt.sign({ _id: user._id.toHexString() }, jwtSecret, { expiresIn:"10s" }, (err, token) => {
             if (!err) {
                 resolve(token);
             } else {
@@ -92,6 +92,12 @@ UserSchema.methods.createSession = function(){
 }
 
 /* MODEL METHODS (static methods) */
+
+
+UserSchema.statics.getJWTSecret = () => {
+    return jwtSecret;
+}
+
 UserSchema.statics.findByIdAndToken = function(_id, token) {
     // finds user by id token
     // used in auth middleware (verifySession)
@@ -175,6 +181,7 @@ let saveSessionDatabase = (user, refreshToken) => {
 let generateRefreshAuthTokenExpiryTime = () => {
     let daysUntilExpire = "10";
     let secondsUntilExpire = ((daysUntilExpire * 24) * 60) * 60;
+
     return ((Date.now() / 1000) + secondsUntilExpire);
 }
 
