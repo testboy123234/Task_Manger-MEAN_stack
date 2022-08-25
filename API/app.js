@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 // Load in the mongoose models
 const { List, Task, User } = require('./db/models');
 const jwt = require('jsonwebtoken');
+const { update } = require('lodash');
 
 
 // Load middleware
@@ -146,10 +147,10 @@ app.post('/lists', authenticate, (req, res) => {
  */
 app.patch('/lists/:id', authenticate, (req, res) => {
     // we want to update the specifed list (list document with in the URL) with the new values specifed in the JSON body of the request 
-    List.findOneAndUpdate({ _id: req.params.id, _userId: req.user.user_id }, {
+    List.findOneAndUpdate({ _id: req.params.id, _userId: req.user_id }, {
         $set: req.body
     }).then(() => {
-        res.sendStatus(200);
+    res.send({'message' : 'updated successfully'});
     })
 });
 
