@@ -1,0 +1,36 @@
+# Node.js
+node_modules/
+
+# Dependency directory
+dist/
+
+# Compiled TypeScript
+*.js
+
+# Logs and runtime data
+logs/
+*.log
+
+# Other generated files
+npm-debug.log*
+yarn-error.log*
+
+# Editor-specific files
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Testing
+e2e/screenshots/
+e2e/videos/
+
+# Angular specific folder
+.angular/
